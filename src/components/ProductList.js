@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import CurrentList from './CurrentList';
+import AddProduct from './AddProduct';
 
 const ProductList = React.createClass({
   getInitialState() {
@@ -28,10 +29,10 @@ const ProductList = React.createClass({
   updateProduct(productId, newName, newPrice, newDescription) {
     let updateProducts = this.state.products;
     let updateProduct = {
-      id: productId,
       name: newName,
       price: newPrice,
-      description: newDescription
+      description: newDescription,
+      id: productId
     };
     for (let i = 0; i < updateProducts.length; i++) {
       if (updateProducts[i].id === productId) {
@@ -44,9 +45,6 @@ const ProductList = React.createClass({
     return (
       <div>
         <h1>ProductList</h1>
-        <div className="container">
-          <AddProduct add={this.addProduct} />
-        </div>
         <div className="container">
           <CurrentList currProducts={this.state.products} delete={this.deleteProduct} update={this.updateProduct} />
         </div>

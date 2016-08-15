@@ -19,18 +19,26 @@ const Product = React.createClass({
   },
   render() {
     return (
-      <li>
-      <button className="btn btn-default" onClick={this.deleteProduct}>
-      Delete
-      </button>
-      <button className="btn btn-primary" onClick={this.updateButtonClick}>
-      Update
-      </button>
-        {this.props.productName}
-        {this.props.productPrice}
-        {this.props.productDescription}
-        <EditForm hidden={this.state.visible} formVisible={this.setFormHidden} updateProduct={this.props.updateProduct} productId={this.props.productId} productName={this.props.productName} productPrice={this.props.productPrice} productDescription={this.props.productDescription}/>
-      </li>
+      <tr>
+      <td>
+      {this.props.productName}
+      </td>
+      <td>
+      {this.props.productPrice}
+      </td>
+      <td>
+      {this.props.productDescription}
+      </td>
+      <td>
+      <EditForm hidden={this.state.visible} formVisible={this.setFormHidden} updateProduct={this.props.updateProduct} productId={this.props.productId} productName={this.props.productName} productPrice={this.props.productPrice} productDescription={this.props.productDescription}/>
+      </td>
+      <td>
+      <button className="btn btn-default" onClick={this.deleteProduct}>Delete</button>
+      </td>
+      <td>
+      <button className="btn btn-primary" onClick={this.updateButtonClick}>Update</button>
+      </td>
+      </tr>
     )
   }
 })
