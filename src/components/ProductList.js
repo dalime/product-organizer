@@ -17,9 +17,7 @@ const ProductList = React.createClass({
     localStorage.products = JSON.stringify(this.state.products);
   },
   addProduct(product) {
-    this.setState({
-      products: this.state.products.concat(product)
-    });
+    this.setState({products: this.state.products.concat(product)});
   },
   deleteProduct(productId) {
     let deleteArr = this.state.products.filter(product => {
@@ -53,6 +51,7 @@ const ProductList = React.createClass({
           <AddProduct add={this.addProduct}/>
         </div>
         <hr/>
+        <p>Please click on column headings to sort results</p>
         <div>
           <CurrentList currProducts={this.state.products} delete={this.deleteProduct} update={this.updateProduct} />
         </div>

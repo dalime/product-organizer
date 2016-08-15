@@ -3,16 +3,23 @@ import ReactDOM from 'react-dom';
 
 const Totals = React.createClass({
   getInitialState() {
-    totalProducts: 0,
-    totalPrice: 0
+    let products = this.props.products;
+    let productCount = this.props.products.length;
+    let productsPrice = products.forEach(product => {
+      productsPrice += parseInt(product.price);
+    })
+    return {
+      totalProducts: productCount,
+      totalPrice: productsPrice
+    }
   },
-  componentDidMount() {
+  componentDidUpdate() {
     let products = this.props.products;
     let productCount = 0;
     let productsPrice = 0;
     products.forEach(product => {
       productCount++;
-      productsPrice += product.price;
+      productsPrice += parseInt(product.price);
     })
     this.setState({totalProducts: productCount, totalPrice: productsPrice});
   },

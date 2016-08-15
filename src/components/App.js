@@ -5,7 +5,7 @@ import ProductList from './ProductList';
 const App = React.createClass({
   render() {
     return (
-      <div>
+      <div className="container">
         <h1>Product Organizer</h1>
         <ProductList />
       </div>

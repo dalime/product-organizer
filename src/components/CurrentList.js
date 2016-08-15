@@ -4,7 +4,10 @@ import EditForm from './editform.js';
 const Product = React.createClass({
   getInitialState() {
     return {
-      visible: "hidden"
+      visible: "hidden",
+      nameAscending: true,
+      priceAscending: true,
+      descriptionAscending: true
     }
   },
   deleteProduct() {
@@ -44,30 +47,87 @@ const Product = React.createClass({
 })
 
 const CurrentList = React.createClass({
+  getInitialState() {
+    return {
+      products: this.props.currProducts
+    }
+  },
+  componentDidUpdate() {
+    this.setState({products: this.props.currProducts});
+  },
   sortName() {
-    
+    if (this.state.nameAscending) {
+      this.setState({nameAscending: false});
+    }
+    let products = this.state.products;
+    let sortProducts = products.sort(function(a,b) {
+      let keyA = a.name, keyB = b.name;
+      if (this.state.nameAscending) {
+        if (keyA < keyB) return -1;
+        if (keyA > keyB) return 1;
+      } else {
+        if (keyA < keyB) return 1;
+        if (keyA > keyB) return -1;
+      }
+      return 0;
+    });
+    this.setState({products: sortProducts});
   },
   sortPrice() {
-
+    if (this.state.priceAscending) {
+      this.setState({priceAscending: false});
+    }
+    let products = this.state.products;
+    let sortProducts = products.sort(function(a,b) {
+      let keyA = parseInt(a.price), keyB = parseInt(b.price);
+      if (this.state.priceAscending) {
+        if (keyA < keyB) return -1;
+        if (keyA > keyB) return 1;
+      } else {
+        if (keyA < keyB) return 1;
+        if (keyA > keyB) return -1;
+      }
+      return 0;
+    });
+    this.setState({products: sortProducts});
   },
   sortDescription() {
-
+    if (this.state.descriptionAscending) {
+      this.setState({descriptionAscending: false});
+    }
+    let products = this.state.products;
+    let sortProducts = products.sort(function(a,b) {
+      let keyA = a.description, keyB = b.description;
+      if (this.state.descriptionAscending) {
+        if (keyA < keyB) return -1;
+        if (keyA > keyB) return 1;
+      } else {
+        if (keyA < keyB) return 1;
+        if (keyA > keyB) return -1;
+      }
+      return 0;
+    });
+    this.setState({products: sortProducts});
   },
   render() {
-    let productList = this.props.currProducts.map(product => {
+    let productList = this.state.products.map(product => {
       return <Product key={product.id} productId={product.id} productName={product.name} productPrice={product.price} productDescription={product.description} deleteProduct={this.props.delete} updateProduct={this.props.update}/>
     });
     return (
       <table>
-        <tr>
-          <th onClick={this.sortName}>Name</th>
-          <th onClick={this.sortPrice}>Price</th>
-          <th onClick={this.sortDescription}>Description</th>
-          <th></th>
-          <th>Delete</th>
-          <th>Update</th>
-        </tr>
+        <thead>
+          <tr>
+            <th onClick={this.sortName}>Name</th>
+            <th onClick={this.sortPrice}>Price</th>
+            <th onClick={this.sortDescription}>Description</th>
+            <th></th>
+            <th>Delete</th>
+            <th>Update</th>
+          </tr>
+        </thead>
+        <tbody>
         {productList}
+        </tbody>
       </table>
     )
   }

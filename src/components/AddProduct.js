@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import uuid from 'uuid';
 
 const AddProduct = React.createClass({
   getInitialState() {
@@ -26,7 +27,6 @@ const AddProduct = React.createClass({
       description: this.state.description,
       id: uuid()
     };
-    console.log('new product: ', product);
     this.props.add(product);
     this.setState({name: null, price: null, description: null});
   },
