@@ -44,12 +44,29 @@ const Product = React.createClass({
 })
 
 const CurrentList = React.createClass({
+  sortName() {
+    
+  },
+  sortPrice() {
+
+  },
+  sortDescription() {
+
+  },
   render() {
     let productList = this.props.currProducts.map(product => {
       return <Product key={product.id} productId={product.id} productName={product.name} productPrice={product.price} productDescription={product.description} deleteProduct={this.props.delete} updateProduct={this.props.update}/>
     });
     return (
       <table>
+        <tr>
+          <th onClick={this.sortName}>Name</th>
+          <th onClick={this.sortPrice}>Price</th>
+          <th onClick={this.sortDescription}>Description</th>
+          <th></th>
+          <th>Delete</th>
+          <th>Update</th>
+        </tr>
         {productList}
       </table>
     )

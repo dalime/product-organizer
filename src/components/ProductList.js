@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import CurrentList from './CurrentList';
 import AddProduct from './AddProduct';
+import Totals from './Totals';
 
 const ProductList = React.createClass({
   getInitialState() {
@@ -43,10 +44,16 @@ const ProductList = React.createClass({
   },
   render() {
     return (
-      <div>
+      <div className="container">
         <h1>ProductList</h1>
-        <div className="container">
+        <div>
+          <Totals products={this.state.products}/>
+        </div>
+        <div>
           <AddProduct add={this.addProduct}/>
+        </div>
+        <hr/>
+        <div>
           <CurrentList currProducts={this.state.products} delete={this.deleteProduct} update={this.updateProduct} />
         </div>
       </div>
