@@ -9,7 +9,6 @@ const App = React.createClass({
     return (
       <div>
         <h1>Product Organizer</h1>
-        <AddProduct />
         <Totals />
         <ProductList />
       </div>

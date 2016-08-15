@@ -46,6 +46,7 @@ const ProductList = React.createClass({
       <div>
         <h1>ProductList</h1>
         <div className="container">
+          <AddProduct add={this.addProduct}/>
           <CurrentList currProducts={this.state.products} delete={this.deleteProduct} update={this.updateProduct} />
         </div>
       </div>

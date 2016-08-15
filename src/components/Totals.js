@@ -5,7 +5,7 @@ const Totals = React.createClass({
   render() {
     return (
       <div>
-        <h1>Totals</h1>
+        <h2>Test</h2>
       </div>
     )
   }

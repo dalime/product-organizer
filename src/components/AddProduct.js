@@ -25,7 +25,8 @@ const AddProduct = React.createClass({
       description: this.state.description,
       id: uuid()
     };
-    this.props.addProduct(product);
+    console.log('new product: ', product);
+    this.props.add(product);
     this.setState({name: "", price: "", description: ""});
   },
   render() {
